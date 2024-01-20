@@ -1,6 +1,6 @@
 {
-  "name": "whats-in-my-todo",
-  "homepage": "https://yoonsunny17.github.io/whats-in-my-todo",
+  "name": "todo-app",
+  "homepage": "https://yoonsunny17.github.io/todo-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
