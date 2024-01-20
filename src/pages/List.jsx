@@ -77,7 +77,7 @@ export const List = () => {
   );
 
   const handleBtnClick = () => {
-    navigate("/new");
+    navigate(process.env.PUBLIC_URL + "/new");
   };
 
   const handleTodoListUpdate = (newTodoList) => {
