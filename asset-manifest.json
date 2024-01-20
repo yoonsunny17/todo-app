@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/whats-in-my-todo/static/css/main.f855e6bc.css",
+    "main.js": "/whats-in-my-todo/static/js/main.88edef64.js",
+    "index.html": "/whats-in-my-todo/index.html",
+    "main.f855e6bc.css.map": "/whats-in-my-todo/static/css/main.f855e6bc.css.map",
+    "main.88edef64.js.map": "/whats-in-my-todo/static/js/main.88edef64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.88edef64.js"
+  ]
+}
