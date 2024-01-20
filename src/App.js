@@ -15,9 +15,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<List />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path={process.env.PUBLIC_URL + "/"} element={<List />} />
+        <Route path={process.env.PUBLIC_URL + "/new"} element={<New />} />
+        <Route
+          path={process.env.PUBLIC_URL + "/detail/:id"}
+          element={<Detail />}
+        />
       </Routes>
     </div>
   );
