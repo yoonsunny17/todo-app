@@ -23,6 +23,7 @@ export const List = () => {
   const [selectedSortFilter, setSelectedSortFilter] = useState("최근생성순");
 
   // TODO: 필터링 기능 추가 (최근생성순 / 오래된 생성순 / 우선순위 낮은순 높은순)
+  // FIXME: 검색기능 & 필터링 동시적용이 안되는 버그 발생! filteredData로 해야할듯
 
   useEffect(() => {
     let copyList = [...getTodoList];
@@ -32,23 +33,21 @@ export const List = () => {
       copyList.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     }
 
-    console.log(copyList);
+    setTodoList(copyList);
   }, [getTodoList, selectedSortFilter]);
 
   const handleSearchInput = useCallback(
     (e) => {
-      const inputValue = e.target.value;
+      const inputValue = e.target.value.toUpperCase();
       const copy = [...getTodoList];
 
-      if (inputValue.length !== "") {
-        const searchedTodoList = copy.filter((item) => {
-          if (item.title.toUpperCase().includes(inputValue.toUpperCase())) {
-            return item;
-          }
-        });
+      if (inputValue.length !== 0) {
+        const searchedTodoList = copy.filter((item) =>
+          item.title.toUpperCase().includes(inputValue)
+        );
         setTodoList(searchedTodoList);
       } else {
-        return setTodoList(getTodoList);
+        setTodoList(copy);
       }
     },
     [getTodoList]
@@ -62,10 +61,6 @@ export const List = () => {
     setTodoList(newTodoList);
     localStorage.setItem("todoList", JSON.stringify(newTodoList));
   };
-
-  useEffect(() => {
-    console.log(todoList);
-  }, [todoList]);
 
   return (
     <PageLayout sx={{ padding: "48px 24px" }}>
