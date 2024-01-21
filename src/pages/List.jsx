@@ -23,39 +23,17 @@ export const List = () => {
   const [selectedSortFilter, setSelectedSortFilter] = useState("최근생성순");
 
   // TODO: 필터링 기능 추가 (최근생성순 / 오래된 생성순 / 우선순위 낮은순 높은순)
-  // TODO: 필터링 기능 추가 (최근생성순 / 오래된 생성순 / 우선순위 낮은순 높은순)
-  // TODO: 필터링 기능 추가 (최근생성순 / 오래된 생성순 / 우선순위 낮은순 높은순)
 
-  // useEffect(() => {
-  //   const priorityLevel = {
-  //     HIGH: 0,
-  //     MEDIUM: 1,
-  //     LOW: 2,
-  //   };
-  //   switch (selectedSortFilter) {
-  //     case "우선순위 높은순":
-  //       setTodoList((prevList) =>
-  //         [...prevList].sort(
-  //           (a, b) => priorityLevel[a.priority] - priorityLevel[b.priority]
-  //         )
-  //       );
-  //       // setTodoList(
-  //       //   [...todoList].sort(
-  //       //     (a, b) => priorityLevel[a.priority] - priorityLevel[b.priority]
-  //       //   )
-  //       // );
-  //       break;
-  //     case "우선순위 낮은순":
-  //       setTodoList((prevList) =>
-  //         [...prevList].sort(
-  //           (a, b) => priorityLevel[a.priority] - priorityLevel[b.priority]
-  //         )
-  //       );
-  //       break;
-  //     default:
-  //       setTodoList((prevList) => [...prevList]);
-  //   }
-  // }, [selectedSortFilter]);
+  useEffect(() => {
+    let copyList = [...getTodoList];
+    if (selectedSortFilter === "최근생성순") {
+      copyList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } else if (selectedSortFilter === "오래된순") {
+      copyList.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    }
+
+    console.log(copyList);
+  }, [getTodoList, selectedSortFilter]);
 
   const handleSearchInput = useCallback(
     (e) => {
