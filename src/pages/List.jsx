@@ -117,7 +117,13 @@ export const List = () => {
           })}
         </Select>
       </Stack>
-      <Box sx={{ maxHeight: "calc(84% - 8px)", overflowY: "scroll" }}>
+      <Box
+        sx={{
+          maxHeight: "calc(84% - 8px)",
+          overflowY: "auto",
+          "::-webkit-scrollbar": { display: "none" },
+        }}
+      >
         <ListBody todoList={todoList} changeTodoList={handleTodoListUpdate} />
       </Box>
     </PageLayout>
